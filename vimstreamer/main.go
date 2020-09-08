@@ -42,9 +42,10 @@ func main() {
 
 	q := make(chan image.Image, 2)
 	go func() {
+		var img image.Image
+		var err error
 		for {
-			var img image.Image
-			err := dec.Decode(&img)
+			img, err = dec.Decode()
 			if err != nil {
 				break
 			}
